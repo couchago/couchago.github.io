@@ -1,0 +1,22 @@
+.apply {
+  background-color: #f39c12;
+  color: white;
+  padding: 3rem 0;
+}
+
+.apply h1 {
+  margin: 0;
+}
+
+.apply button {
+  margin-left: 3em;
+}
+
+.apply .apply-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.apply .apply-content * {
+  align-self: center;
+}

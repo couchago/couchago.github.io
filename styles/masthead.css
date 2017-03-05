@@ -1,0 +1,45 @@
+.masthead .title-row {
+}
+
+.masthead .title-row h1 {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+
+.masthead .title-row span {
+  color: #f39c12;
+}
+
+.masthead .adventurers {
+  margin: 2rem 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.masthead .adventurer-group {
+  background-size: cover;
+  background-position: center;
+  width: 19%;
+  height: 300px;
+}
+
+.masthead .adventurer-group:nth-of-type(1) {
+  background-image: url("../images/climbing.jpg");
+}
+
+.masthead .adventurer-group:nth-of-type(2) {
+  background-image: url("../images/parkour.jpg");
+}
+
+.masthead .adventurer-group:nth-of-type(3) {
+  background-image: url("../images/highline.jpg");
+}
+
+.masthead .adventurer-group:nth-of-type(4) {
+  background-image: url("../images/hiking.jpg");
+}
+
+.masthead .adventurer-group:nth-of-type(5) {
+  background-image: url("../images/bowhunting.jpg");
+}
