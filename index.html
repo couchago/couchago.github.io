@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>couchago</title>
+    <meta name="description" content="Couchago<">
+    <meta name="author" content="Alex">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 3: Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+    <!-- Google Webfonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat+Alternates:500"
+    rel="stylesheet">
+
+    <!-- Couchago Stylesheets  -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Font Awesome Stylesheets  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+        font-size: 1rem;
+        color: #484848;
+        background-color: #fff;
+      }
+
+      h1 {
+        font-size: 3.375rem;
+      }
+
+      p {
+        font-size: 2.25rem;
+        font-weight: 300;
+      }
+
+      .supporting-text {
+        color: #767676;
+      }
+
+      nav {
+        padding: 2em 0;
+      }
+
+      input {
+        box-shadow: none !important;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        background-color: transparent !important;
+      }
+
+      .nav-positioner {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn {
+        font-weight: 300;
+        border: none;
+        background-color: #f39c12;
+      }
+
+      .logo {
+        font-family: 'Montserrat Alternates', sans-serif;
+        color: #f39c12;
+        font-size: 2.25rem;
+      }
+
+      .call-to-action {
+        padding: 4rem 0 8rem;
+      }
+
+      .cta-main-text {
+        font-weight: 700;
+      }
+
+      .beta-collection {
+      }
+
+      .beta-collection .btn {
+        margin-left: 1rem;
+      }
+
+      .beta-collection .supporting-text {
+        margin: 4rem 0 2rem;
+      }
+    </style>
+
+    <nav>
+      <div class="container">
+        <div class="nav-positioner">
+          <div class="nav-left-side">
+            <span class="logo">couchago</span>
+          </div>
+
+          <div class="nav-left-side">
+            <!--<button class="btn btn-primary">Sign Up for Beta</button>-->
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="call-to-action">
+      <div class="container">
+        <div class="text-center">
+          <h1 class="cta-main-text">
+            Adventure with Kindred Spirits this Weekend.
+          </h1>
+
+          <div class="beta-collection">
+            <p class="supporting-text">
+              Couchago is a private community of couch-surfing
+              adventurers.<br/> If that sounds interesting to you, we'd love to
+              have you join our beta!
+            </p>
+
+            <form class="form-inline">
+              <div class="form-group">
+                <input type="email" class="form-control input-lg" id="exampleInputEmail2" placeholder="Enter email address">
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg">Join Beta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .adventure-picker {
+        padding-top: 0rem;
+        border-top: 1px solid #DBDBDB;
+      }
+
+      .adventure-picker h1 {
+        font-weight: 300;
+      }
+
+      .nat-lang-input {
+        color: #f39c12;
+        border-bottom: dashed 1px #f39c12;
+        cursor: pointer;
+      }
+
+      .filter {
+        display: flex;
+        justify-content: space-between;
+        padding: 3rem 0 2rem;
+      }
+
+      .filter > * {
+        align-self: flex-start;
+        margin: 0
+      }
+
+      .filter p {
+        font-size: 1.5rem;
+      }
+    </style>
+
+    <section class="adventure-picker">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="filter">
+              <h1>
+                I want to
+                <span class="nat-lang-input">make memories</span>
+                this weekend.
+              </h1>
+
+              <p class="">
+                Ordered by
+                <span class="nat-lang-input">popularity</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .adventures {
+        padding: 2rem 0 6rem;
+      }
+    </style>
+
+    <style>
+      .adventure-widget {
+        width: 32%;
+        border-radius: 1rem;
+        border: 1px solid #DBDBDB;
+        overflow: hidden;
+        margin: 2rem 0;
+      }
+
+      .activity-image {
+        height: 175px;
+        background-image: url(slackline.jpg);
+        background-size: cover;
+        background-position: center;
+        padding: 1rem 2rem;
+      }
+
+      .summary,
+      .deets {
+        padding: 1.5rem;
+      }
+
+      .summary p {
+        font-size: 1.5rem;
+      }
+
+      .deets {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #DBDBDB;
+      }
+
+      .deets i {
+        font-size: 1.25rem;
+        margin-right: 0.5rem;
+      }
+
+      .deets .left-side {
+        display: flex;
+      }
+
+      .deets .left-side p,
+      .deets .right-side p {
+        margin: 0;
+        font-size: 1.25rem;
+      }
+
+      .deets .left-side > * {
+        align-self: center;
+      }
+
+      .hosts {
+        margin: 0;
+      }
+
+      .host-images {
+        display: flex;
+        justify-content: center;
+      }
+
+      .host-images img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: -30px 1rem -10px;
+        border: 5px solid white;
+      }
+
+      .activity-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      .adventure-widgets {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    </style>
+
+    <section class="adventures">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="adventure-widgets">
+              <div class="adventure-widget">
+                <div class="activity-image">
+                  <div class="image-content">
+                    <span class="activity-title">Slackline</span>
+                  </div>
+                </div>
+
+                <div class="host-images">
+                  <image src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/men/2.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/women/1.jpg"/>
+                </div>
+
+                <div class="summary">
+                  <p>We'll be setting up a few slacklines in Hocking Hills and
+                    camping nearby for the night. So far we have 2 long lines and
+                    2 shorter tree lines. All levels welcome!</p>
+
+                  <p class="hosts">
+                    Hosted by <strong>Alex</strong>, <strong>Tom</strong>, and
+                    <strong>Eileen</strong>.
+                  </p>
+                </div>
+
+                <div class="deets">
+                  <div class="left-side">
+                    <i class="fa fa-map-marker"></i>
+                    <p>Hocking Hills, OH</p>
+                  </div>
+
+                  <div class="right-side">
+                    <p>10 / 12 adventurers</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="adventure-widget">
+                <div class="activity-image">
+                  <div class="image-content">
+                    <span class="activity-title">Slackline</span>
+                  </div>
+                </div>
+
+                <div class="host-images">
+                  <image src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/men/2.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/women/1.jpg"/>
+                </div>
+
+                <div class="summary">
+                  <p>We'll be setting up a few slacklines in Hocking Hills and
+                    camping nearby for the night. So far we have 2 long lines and
+                    2 shorter tree lines. All levels welcome!</p>
+
+                  <p class="hosts">
+                    Hosted by <strong>Alex</strong>, <strong>Tom</strong>, and
+                    <strong>Eileen</strong>.
+                  </p>
+                </div>
+
+                <div class="deets">
+                  <div class="left-side">
+                    <i class="fa fa-map-marker"></i>
+                    <p>Hocking Hills, OH</p>
+                  </div>
+
+                  <div class="right-side">
+                    <p>10 / 12 adventurers</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="adventure-widget">
+                <div class="activity-image">
+                  <div class="image-content">
+                    <span class="activity-title">Slackline</span>
+                  </div>
+                </div>
+
+                <div class="host-images">
+                  <image src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/men/2.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/women/1.jpg"/>
+                </div>
+
+                <div class="summary">
+                  <p>We'll be setting up a few slacklines in Hocking Hills and
+                    camping nearby for the night. So far we have 2 long lines and
+                    2 shorter tree lines. All levels welcome!</p>
+
+                  <p class="hosts">
+                    Hosted by <strong>Alex</strong>, <strong>Tom</strong>, and
+                    <strong>Eileen</strong>.
+                  </p>
+                </div>
+
+                <div class="deets">
+                  <div class="left-side">
+                    <i class="fa fa-map-marker"></i>
+                    <p>Hocking Hills, OH</p>
+                  </div>
+
+                  <div class="right-side">
+                    <p>10 / 12 adventurers</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="adventure-widget">
+                <div class="activity-image">
+                  <div class="image-content">
+                    <span class="activity-title">Slackline</span>
+                  </div>
+                </div>
+
+                <div class="host-images">
+                  <image src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/men/2.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/women/1.jpg"/>
+                </div>
+
+                <div class="summary">
+                  <p>We'll be setting up a few slacklines in Hocking Hills and
+                    camping nearby for the night. So far we have 2 long lines and
+                    2 shorter tree lines. All levels welcome!</p>
+
+                  <p class="hosts">
+                    Hosted by <strong>Alex</strong>, <strong>Tom</strong>, and
+                    <strong>Eileen</strong>.
+                  </p>
+                </div>
+
+                <div class="deets">
+                  <div class="left-side">
+                    <i class="fa fa-map-marker"></i>
+                    <p>Hocking Hills, OH</p>
+                  </div>
+
+                  <div class="right-side">
+                    <p>10 / 12 adventurers</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="adventure-widget">
+                <div class="activity-image">
+                  <div class="image-content">
+                    <span class="activity-title">Slackline</span>
+                  </div>
+                </div>
+
+                <div class="host-images">
+                  <image src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/men/2.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/women/1.jpg"/>
+                </div>
+
+                <div class="summary">
+                  <p>We'll be setting up a few slacklines in Hocking Hills and
+                    camping nearby for the night. So far we have 2 long lines and
+                    2 shorter tree lines. All levels welcome!</p>
+
+                  <p class="hosts">
+                    Hosted by <strong>Alex</strong>, <strong>Tom</strong>, and
+                    <strong>Eileen</strong>.
+                  </p>
+                </div>
+
+                <div class="deets">
+                  <div class="left-side">
+                    <i class="fa fa-map-marker"></i>
+                    <p>Hocking Hills, OH</p>
+                  </div>
+
+                  <div class="right-side">
+                    <p>10 / 12 adventurers</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="adventure-widget">
+                <div class="activity-image">
+                  <div class="image-content">
+                    <span class="activity-title">Slackline</span>
+                  </div>
+                </div>
+
+                <div class="host-images">
+                  <image src="https://randomuser.me/api/portraits/men/1.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/men/2.jpg"/>
+                  <image src="https://randomuser.me/api/portraits/women/1.jpg"/>
+                </div>
+
+                <div class="summary">
+                  <p>We'll be setting up a few slacklines in Hocking Hills and
+                    camping nearby for the night. So far we have 2 long lines and
+                    2 shorter tree lines. All levels welcome!</p>
+
+                  <p class="hosts">
+                    Hosted by <strong>Alex</strong>, <strong>Tom</strong>, and
+                    <strong>Eileen</strong>.
+                  </p>
+                </div>
+
+                <div class="deets">
+                  <div class="left-side">
+                    <i class="fa fa-map-marker"></i>
+                    <p>Hocking Hills, OH</p>
+                  </div>
+
+                  <div class="right-side">
+                    <p>10 / 12 adventurers</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Bootstrap 3: Latest compiled and minified JavaScript -->
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <!--<script src="js/scripts.js"></script>-->
+  </body>
+</html>
