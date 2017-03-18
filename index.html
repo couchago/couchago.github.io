@@ -214,14 +214,14 @@
                 I want to
                 <select class="select lg">
                   <option value="all">make memories</option>
-                  <option value="all">slackline</option>
-                  <option value="all">highline</option>
-                  <option value="all">climb</option>
-                  <option value="all">boulder</option>
-                  <option value="all">do parkour</option>
-                  <option value="all">hand glide</option>
-                  <option value="all">hike</option>
-                  <option value="all">camp</option>
+                  <option value="slacklin">slackline</option>
+                  <option value="highline">highline</option>
+                  <option value="climb">climb</option>
+                  <option value="boulder">boulder</option>
+                  <option value="parkour">do parkour</option>
+                  <option value="handglide">hand glide</option>
+                  <option value="hide">hike</option>
+                  <option value="camp">camp</option>
                 </select>
                 this weekend.
               </h1>
@@ -229,8 +229,8 @@
               <p class="">
                 Ordered by
                 <select class="select">
-                  <option value="all">popularity</option>
-                  <option value="all">proximity</option>
+                  <option value="popularity">popularity</option>
+                  <option value="proximity">proximity</option>
                 </select>.
               </p>
             </div>
@@ -632,12 +632,11 @@
         className += ' lg';
       }
 
-      new Select({
+      var test = new Select({
         el: el,
         className: className
       });
     });
-    Select.init();
   </script>
   </body>
 </html>
