@@ -180,6 +180,29 @@
       .select-target b {
         display: none;
       }
+
+      .select-theme-default.lg  li {
+        line-height: 2rem !important;
+        font-size: 2.25rem !important;
+        font-weight: 300 !important;
+      }
+
+      .select-theme-default.lg .select-content {
+        max-width: 30rem !important;
+        max-height: 30rem !important;
+      }
+
+      .select-theme-default.lg .select-option {
+        padding: 1rem 2rem !important;
+      }
+
+      .select-theme-default .select-option {
+        padding: 0.5rem 1rem !important;
+      }
+
+      .select-option::before {
+        display: none !important;
+      }
     </style>
 
     <section class="adventure-picker">
@@ -189,10 +212,10 @@
             <div class="filter">
               <h1>
                 I want to
-                <select>
+                <select class="select lg">
                   <option value="all">make memories</option>
                   <option value="all">slackline</option>
-                  <option value="all" disabled>highline</option>
+                  <option value="all">highline</option>
                   <option value="all">climb</option>
                   <option value="all">boulder</option>
                   <option value="all">do parkour</option>
@@ -205,7 +228,7 @@
 
               <p class="">
                 Ordered by
-                <select>
+                <select class="select">
                   <option value="all">popularity</option>
                   <option value="all">proximity</option>
                 </select>.
@@ -602,6 +625,18 @@
   <script src="select.min.js"></script>
 
   <script>
+    $('select').each(function(i, el) {
+      var className = 'select-theme-default';
+
+      if (el.className.indexOf('lg') !== -1) {
+        className += ' lg';
+      }
+
+      new Select({
+        el: el,
+        className: className
+      });
+    });
     Select.init();
   </script>
   </body>
