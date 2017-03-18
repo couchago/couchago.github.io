@@ -19,11 +19,11 @@
     href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat+Alternates:500"
     rel="stylesheet">
 
-    <!-- Couchago Stylesheets  -->
-    <link rel="stylesheet" href="index.css">
-
     <!-- Font Awesome Stylesheets  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Select theme  -->
+    <link rel="stylesheet" href="select-theme-default.css">
   </head>
 
   <body>
@@ -166,6 +166,20 @@
       .filter p {
         font-size: 1.5rem;
       }
+
+      .select-target {
+        border: none !important;
+        background-color: transparent !important;
+        padding: 0 !important;
+        vertical-align: bottom !important;
+        border-bottom: dashed 1px #f39c12 !important;
+        border-radius: 0 !important;
+        color: #f39c12 !important;
+      }
+
+      .select-target b {
+        display: none;
+      }
     </style>
 
     <section class="adventure-picker">
@@ -175,13 +189,26 @@
             <div class="filter">
               <h1>
                 I want to
-                <span class="nat-lang-input">make memories</span>
+                <select>
+                  <option value="all">make memories</option>
+                  <option value="all">slackline</option>
+                  <option value="all" disabled>highline</option>
+                  <option value="all">climb</option>
+                  <option value="all">boulder</option>
+                  <option value="all">do parkour</option>
+                  <option value="all">hand glide</option>
+                  <option value="all">hike</option>
+                  <option value="all">camp</option>
+                </select>
                 this weekend.
               </h1>
 
               <p class="">
                 Ordered by
-                <span class="nat-lang-input">popularity</span>.
+                <select>
+                  <option value="all">popularity</option>
+                  <option value="all">proximity</option>
+                </select>.
               </p>
             </div>
           </div>
@@ -568,6 +595,14 @@
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
 
-  <!--<script src="js/scripts.js"></script>-->
+  <!-- Tether -->
+  <script src="tether.min.js"></script>
+
+  <!-- Stylable Select -->
+  <script src="select.min.js"></script>
+
+  <script>
+    Select.init();
+  </script>
   </body>
 </html>
