@@ -1,3 +1,4 @@
+var R = window.R;
 var faker = window.faker;
 
 function getRandomArbitrary(min, max) {
@@ -25,4 +26,13 @@ window.addUserData = function (activity) {
   }
 
   return activity;
+};
+
+function sortByPopularity(activities) {
+  var diff = function(a, b) { return b.adventurerCount - a.adventurerCount; };
+  return R.sort(diff, activities);
+}
+
+window.sort = function(sortType, activities) {
+  return sortByPopularity(activities);
 };

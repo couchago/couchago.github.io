@@ -231,10 +231,10 @@
                 I want to
                 <select class="select lg">
                   <option value="all">make memories</option>
-                  <option value="slacklin">slackline</option>
+                  <option value="slackline">slackline</option>
                   <option value="climb">climb</option>
-                  <option value="hide">hike</option>
-                  <option value="camp">explore</option>
+                  <option value="hike">hike</option>
+                  <option value="explore">explore</option>
                 </select>
                 this weekend.
               </h1>
@@ -477,6 +477,12 @@
   <script src="adventure-data.js"></script>
 
   <script>
+    // add adventures
+    var adventureRoot = $('.adventure-widgets');
+    R.forEach(function(adventure) {
+      adventureRoot.append(adventureNodeFromData(adventure));
+    }, sort('popularity', adventureData.all));
+
     // Init custom select
     $('select').each(function(i, el) {
       var className = 'select-theme-default';
@@ -485,18 +491,18 @@
         className += ' lg';
       }
 
-      var test = new Select({
+      var activitySelect = new Select({
         el: el,
         className: className
       });
+
+      activitySelect.on('change', function(el) {
+        adventureRoot.empty();
+        R.forEach(function(adventure) {
+          adventureRoot.append(adventureNodeFromData(adventure));
+        }, sort('popularity', adventureData[el.value]));
+      });
     });
-
-    // add adventures
-    var adventureRoot = $('.adventure-widgets');
-
-    R.forEach(function(adventure) {
-      adventureRoot.append(adventureNodeFromData(adventure));
-    }, adventureData.all);
   </script>
   </body>
 </html>
