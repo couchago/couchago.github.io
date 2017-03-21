@@ -186,6 +186,14 @@
         color: #f39c12 !important;
       }
 
+      .select.select-theme-default .select-options .select-option:first-child {
+        border-radius: 0.25rem 0.25rem 0 0;
+      }
+
+      .select.select-theme-default .select-options .select-option:last-child {
+        border-radius: 0.25rem 0.25rem 0 0;
+      }
+
       .select-target b {
         display: none;
       }
@@ -224,13 +232,9 @@
                 <select class="select lg">
                   <option value="all">make memories</option>
                   <option value="slacklin">slackline</option>
-                  <option value="highline">highline</option>
                   <option value="climb">climb</option>
-                  <option value="boulder">boulder</option>
-                  <option value="parkour">do parkour</option>
-                  <option value="handglide">hand glide</option>
                   <option value="hide">hike</option>
-                  <option value="camp">camp</option>
+                  <option value="camp">explore</option>
                 </select>
                 this weekend.
               </h1>
@@ -464,7 +468,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
 
   <!-- Adventure Data -->
+  <script src="adventure-data-utils.js"></script>
+  <script src="adventure-node-from-data.js"></script>
   <script src="slackline-data.js"></script>
+  <script src="climb-data.js"></script>
+  <script src="explore-data.js"></script>
+  <script src="hike-data.js"></script>
   <script src="adventure-data.js"></script>
 
   <script>
