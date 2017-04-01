@@ -84,6 +84,11 @@
         background-color: #f39c12;
       }
 
+      .loading-location {
+        color: #f39c12;
+        margin-right: 0.5rem;
+      }
+
       .logo {
         font-family: 'Montserrat Alternates', sans-serif;
         color: #f39c12;
@@ -253,6 +258,7 @@
               </h1>
 
               <p class="">
+                <i class="loading-location hide"></i>
                 Ordered by
                 <select class="order-select">
                   <option value="popularity">popularity</option>
@@ -533,6 +539,14 @@
       $(alertStr).insertBefore('.adventure-picker .filter');
     }
 
+    function showSpinner() {
+      $('.loading-location').addClass('fa fa-spinner fa-pulse').removeClass('hide');
+    }
+
+    function hideSpinner() {
+      $('.loading-location').removeClass('hide fa fa-spinner fa-pulse').addClass('hide');
+    }
+
     var $orderSelect = $('.order-select');
     var orderSelect = new Select({el: $orderSelect[0]});
     var orderSelectLastValue = orderSelect.value;
@@ -557,14 +571,22 @@
         }
 
         if (!promptedForCoordinates) {
+          showSpinner();
+
           navigator.geolocation.getCurrentPosition(function(position) {
             userCoordinates = position.coords;
             coordReqCompleted = true;
+            adventureRoot.empty();
+            R.forEach(function(adventure) {
+              adventureRoot.append(adventureNodeFromData(adventure));
+            }, sortByProximity(userCoordinates, adventureData[adventureSelect.value]));
+            hideSpinner();
           }, function(error) {
             coordReqCompleted = true;
             orderSelect.change('popularity');
             orderSelectLastValue = 'popularity';
             addAlertNode();
+            hideSpinner();
           });
 
           promptedForCoordinates = true;
