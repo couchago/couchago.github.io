@@ -229,7 +229,7 @@
             <div class="filter">
               <h1>
                 I want to
-                <select class="select lg">
+                <select class="adventure-select">
                   <option value="all">make memories</option>
                   <option value="slackline">slackline</option>
                   <option value="climb">climb</option>
@@ -241,7 +241,7 @@
 
               <p class="">
                 Ordered by
-                <select class="select">
+                <select class="order-select">
                   <option value="popularity">popularity</option>
                   <option value="proximity">proximity</option>
                 </select>.
@@ -467,6 +467,9 @@
   <!-- Faker -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
 
+  <!-- Geolib -->
+  <script src="geolib.min.js"></script>
+
   <!-- Adventure Data -->
   <script src="adventure-data-utils.js"></script>
   <script src="adventure-node-from-data.js"></script>
@@ -481,27 +484,60 @@
     var adventureRoot = $('.adventure-widgets');
     R.forEach(function(adventure) {
       adventureRoot.append(adventureNodeFromData(adventure));
-    }, sort('popularity', adventureData.all));
+    }, sortByPopularity(adventureData.all));
 
-    // Init custom select
-    $('select').each(function(i, el) {
-      var className = 'select-theme-default';
+    // utils
 
-      if (el.className.indexOf('lg') !== -1) {
-        className += ' lg';
-      }
+    // Init adventure select
+    var $adventureSelect = $('.adventure-select');
 
-      var activitySelect = new Select({
-        el: el,
-        className: className
-      });
+    var adventureSelect = new Select({
+      el: $adventureSelect[0],
+      className: 'select-theme-default lg'
+    });
 
-      activitySelect.on('change', function(el) {
+    adventureSelect.on('change', function(el) {
+      adventureRoot.empty();
+      R.forEach(function(adventure) {
+        adventureRoot.append(adventureNodeFromData(adventure));
+      }, sortByPopularity(adventureData[el.value]));
+    });
+
+    // Init order select
+    var $orderSelect = $('.order-select');
+    var orderSelect = new Select({el: $orderSelect[0]});
+    var orderSelectLastValue = orderSelect.value;
+    var promptedForCoordinates = false;
+    var userCoordinates = null;
+
+    orderSelect.on('change', function(el) {
+      if (orderSelectLastValue === el.value) { return; }
+
+      if (el.value === 'popularity') {
         adventureRoot.empty();
         R.forEach(function(adventure) {
           adventureRoot.append(adventureNodeFromData(adventure));
-        }, sort('popularity', adventureData[el.value]));
-      });
+        }, sortByPopularity(adventureData[adventureSelect.value]));
+      } else if (el.value === 'proximity') {
+        if (!promptedForCoordinates) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            userCoordinates = position.coords;
+          }, function(error) {
+            console.log(error);
+          });
+
+          promptedForCoordinates = true;
+        }
+
+        if (userCoordinates) {
+          adventureRoot.empty();
+          R.forEach(function(adventure) {
+            adventureRoot.append(adventureNodeFromData(adventure));
+          }, sortByProximity(userCoordinates, adventureData[adventureSelect.value]));
+        }
+      }
+
+      orderSelectLastValue = el.value;
     });
   </script>
   </body>

@@ -2,7 +2,7 @@ var R = window.R;
 var addUserData = window.addUserData;
 
 function addSlacklineData(activity) {
-  activity.activity = 'slackline';
+  activity.activity = 'Slackline';
   activity.adventureImage = 'slackline.jpg';
   return activity;
 }
@@ -107,7 +107,9 @@ window.slacklineData = [
     }
   },
   {
-    description: '',
+    description: 'Hang out and slackline on the beach. Bring your lines and ' +
+      'tree hammocks. A couple of are pretty into trick-lining so if you\'ve ' +
+      'never tried it before, we\'ll be happy to teach!',
     location: {
       name: 'South Beach, FL',
       coordinates: [25.7826, -80.1341]
