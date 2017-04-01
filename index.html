@@ -52,6 +52,11 @@
         padding: 2em 0;
       }
 
+      a, a:focus, a:hover {
+        text-decoration: underline;
+        color: inherit;
+      }
+
       input {
         box-shadow: none !important;
         font-family: 'Lato', sans-serif;
@@ -164,7 +169,7 @@
       .filter {
         display: flex;
         justify-content: space-between;
-        padding: 3rem 0 2rem;
+        margin: 3rem 0 2rem;
       }
 
       .filter > * {
@@ -219,6 +224,14 @@
 
       .select-option::before {
         display: none !important;
+      }
+
+      .adventure-picker .alert {
+        margin-top: 3.75rem;
+      }
+
+      .adventure-picker .alert p {
+        font-size: 1.5rem;
       }
     </style>
 
@@ -504,26 +517,54 @@
     });
 
     // Init order select
+    var alertStr = '<div class="no-geo alert alert-warning alert-dismissible show" role="alert">' +
+      '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+        '<span aria-hidden="true">&times;</span>' +
+      '</button>' +
+      '<p>' +
+        '<strong>Holy guacamole!</strong> You should ' +
+        '<a href="javascript:window.location.href=window.location.href">refresh the page</a>' +
+        ' and allow the browser to know your location to find fun stuff near you.' +
+      '</p>' +
+    '</div>';
+
+    function addAlertNode() {
+      if ($('.alert.no-geo').length > 0) { return; }
+      $(alertStr).insertBefore('.adventure-picker .filter');
+    }
+
     var $orderSelect = $('.order-select');
     var orderSelect = new Select({el: $orderSelect[0]});
     var orderSelectLastValue = orderSelect.value;
     var promptedForCoordinates = false;
+    var coordReqCompleted = false;
     var userCoordinates = null;
 
     orderSelect.on('change', function(el) {
       if (orderSelectLastValue === el.value) { return; }
 
+      var switchedToPop = false;
       if (el.value === 'popularity') {
         adventureRoot.empty();
         R.forEach(function(adventure) {
           adventureRoot.append(adventureNodeFromData(adventure));
         }, sortByPopularity(adventureData[adventureSelect.value]));
       } else if (el.value === 'proximity') {
+        if (coordReqCompleted && !userCoordinates) {
+            addAlertNode();
+            orderSelect.change('popularity');
+            switchedToPop = true;
+        }
+
         if (!promptedForCoordinates) {
           navigator.geolocation.getCurrentPosition(function(position) {
             userCoordinates = position.coords;
+            coordReqCompleted = true;
           }, function(error) {
-            console.log(error);
+            coordReqCompleted = true;
+            orderSelect.change('popularity');
+            orderSelectLastValue = 'popularity';
+            addAlertNode();
           });
 
           promptedForCoordinates = true;
@@ -537,7 +578,7 @@
         }
       }
 
-      orderSelectLastValue = el.value;
+      orderSelectLastValue = switchedToPop ? 'popularity' : el.value;
     });
   </script>
   </body>
